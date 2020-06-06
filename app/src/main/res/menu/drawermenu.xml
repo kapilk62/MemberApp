@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/sprofile" android:title="Profile" android:icon="@drawable/ic_profile"/>
+    <item android:id="@+id/smy_bills" android:title="My Bills" android:icon="@drawable/ic_mybills"/>
+    <item android:id="@+id/semergency_number" android:title="Emergency Number" android:icon="@drawable/ic_emergency"/>
+    <item android:id="@+id/sevents" android:title="Events" android:icon="@drawable/ic_event_black_24dp"/>
+    <item android:id="@+id/scomplaints" android:title="Complaints" android:icon="@drawable/ic_complaints"/>
+    <item android:id="@+id/swallet" android:title="Wallet" android:icon="@drawable/ic_wallet"/>
+    <item android:id="@+id/smember" android:title="Members" android:icon="@drawable/ic_member"/>
+    <item android:id="@+id/svehicles" android:title="Vehicles" android:icon="@drawable/ic_vehicle"/>
+    <item android:id="@+id/sannouncements" android:title="Announcements" android:icon="@drawable/ic_announcement"/>
+    <item android:id="@+id/sbalance_sheet" android:title="Balance Sheet" android:icon="@drawable/ic_balancesheet"/>
+    <item android:id="@+id/sdocument" android:title="Documents" android:icon="@drawable/ic_document"/>
+    <item android:id="@+id/srules" android:title="Rules" android:icon="@drawable/ic_rules"/>
+    <item android:id="@+id/snotification" android:title="Notification" android:icon="@drawable/ic_notifications"/>
+    <item android:id="@+id/ssetting" android:title="Setting" android:icon="@drawable/ic_settings_black_24dp"/>
+    <item android:id="@+id/logoutbutton" android:title="Logout" android:icon="@drawable/ic_logout" />
+    <item android:id="@+id/scontact_us" android:title="Contact Us" android:icon="@drawable/ic_contactus"  />
+</menu>
