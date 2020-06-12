@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Society_Code extends AppCompatActivity{
+
+    String president_userid;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     EditText Society_code;
@@ -32,15 +35,16 @@ public class Society_Code extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if(!Society_code.getText().toString().isEmpty()){
-                    String president_userid = Society_code.getText().toString();
+                    president_userid = Society_code.getText().toString();
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("President").child(president_userid);
                     databaseReference.addValueEventListener(new ValueEventListener(){
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
                                 Toast.makeText(Society_Code.this, "Valid!!!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                finish();
+                                Intent intent = new Intent(getApplicationContext(),Multiple_Society.class);
+                                intent.putExtra("PresidentUserId", president_userid);
+                                startActivity(intent);
                             }
                             else
                             {
