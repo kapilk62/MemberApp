@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(LoginActivity.this, "Already Logged In",
                     Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, Society_Code.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
