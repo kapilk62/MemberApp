@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "969239024526",
+    "firebase_url": "https://presidentapp-4a6fa.firebaseio.com",
+    "project_id": "presidentapp-4a6fa",
+    "storage_bucket": "presidentapp-4a6fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969239024526:android:4690f445174eae47aa4adf",
+        "android_client_info": {
+          "package_name": "com.example.memberapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969239024526-vgjtt88ptrlbjf8smdkj192mfaer2o5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.memberapp",
+            "certificate_hash": "d8989dd4b943bcfa50dd59acec6f4116d3e64171"
+          }
+        },
+        {
+          "client_id": "969239024526-73889btbe9va7qtkbsueccjn1kfcbdon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfd0e01o7A6EMYgjTfsP4imvGMqR8jhZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969239024526-73889btbe9va7qtkbsueccjn1kfcbdon.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969239024526:android:d677a40f73452462aa4adf",
+        "android_client_info": {
+          "package_name": "com.example.presidentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969239024526-juqn8h695ebogoo3bgtbb2e0o26j4usn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.presidentapp",
+            "certificate_hash": "d8989dd4b943bcfa50dd59acec6f4116d3e64171"
+          }
+        },
+        {
+          "client_id": "969239024526-jfehic47solinkjgemi9t7ll403pvle1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.presidentapp",
+            "certificate_hash": "621504c1ef311a4f75dfca74bee5796245305e7d"
+          }
+        },
+        {
+          "client_id": "969239024526-73889btbe9va7qtkbsueccjn1kfcbdon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfd0e01o7A6EMYgjTfsP4imvGMqR8jhZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969239024526-73889btbe9va7qtkbsueccjn1kfcbdon.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
