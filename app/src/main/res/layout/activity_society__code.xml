@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Society_Code">
+
+    <EditText
+        android:id="@+id/president_id_code"
+        android:layout_width="371dp"
+        android:layout_height="53dp"
+        android:ems="10"
+        android:hint="Society Code"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/president_id_code_btn"
+        android:layout_width="160dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="76dp"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/president_id_code"
+        tools:layout_editor_absoluteX="125dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

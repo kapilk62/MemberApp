@@ -2,10 +2,20 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/gray</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
+
+        <item name="android:backgroundTint">@color/lightblue</item>
+    </style>
+    <style  name="MyBuildingShowBankDetails" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">false</item>
     </style>
 
 </resources>
