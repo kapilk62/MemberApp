@@ -108,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     email,
                                     m_no
                             );
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            FirebaseDatabase.getInstance().getReference("Users").child("Member")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(userm).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
