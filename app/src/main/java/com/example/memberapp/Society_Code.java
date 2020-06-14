@@ -44,20 +44,6 @@ public class Society_Code extends AppCompatActivity{
                     president_userid = Society_code.getText().toString();
                     databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("President").child(president_userid);
 
-                   /* databaseReferencepresident_id.orderByChild("president_id").equalTo(president_userid)
-                            .addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                    Toast.makeText(Society_Code.this, "not exist", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                   */
                     databaseReference.addValueEventListener(new ValueEventListener(){
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -71,6 +57,7 @@ public class Society_Code extends AppCompatActivity{
                                 Intent intent = new Intent(getApplicationContext(),Multiple_Society.class);
                                 intent.putExtra("PresidentUserId", president_userid);
                                 startActivity(intent);
+                                finish();
                             }
                             else
                             {
