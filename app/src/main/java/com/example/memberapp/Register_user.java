@@ -94,10 +94,29 @@ public class Register_user extends AppCompatActivity {
             state.setText("Checking...");
             state.setVisibility(View.VISIBLE);
             checkUserProfile();
-
         }else {
 
         }
+    }
+
+    private void checkMemberPresident() {
+        DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id");
+        member_president_id.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    finish();
+                }else {
+                    startActivity(new Intent(getApplicationContext(),Society_Code.class));
+                    finish();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void checkUserProfile() {
@@ -106,8 +125,9 @@ public class Register_user extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    startActivity(new Intent(getApplicationContext(),Society_Code.class));
-                    finish();
+                    checkMemberPresident();
+                    //startActivity(new Intent(getApplicationContext(),Society_Code.class));
+                    //finish();
                 }else {
                     startActivity(new Intent(getApplicationContext(),User_Info.class));
                     finish();

@@ -43,10 +43,9 @@ public class Society_Code extends AppCompatActivity{
             public void onClick(View v) {
                 if(!Society_code.getText().toString().isEmpty()){
                     president_userid = Society_code.getText().toString();
-                    databaseReferencepresident_id = FirebaseDatabase.getInstance().getReference("Users").child("Member").child(currentuserId);
                     databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("President").child(president_userid);
 
-                    databaseReferencepresident_id.orderByChild("president_id").equalTo(president_userid)
+                   /* databaseReferencepresident_id.orderByChild("president_id").equalTo(president_userid)
                             .addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -59,28 +58,7 @@ public class Society_Code extends AppCompatActivity{
                                     Toast.makeText(Society_Code.this, "not exist", Toast.LENGTH_SHORT).show();
                                 }
                             });
-                    /*databaseReferencepresident_id.addValueEventListener(new ValueEventListener(){
-
-
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot data : dataSnapshot.getChildren()) {
-                                if (data.child(president_userid).exists()) {
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    President_id_Model president_id_model = new President_id_Model(president_userid);
-                                    databaseReferencepresident_id.setValue(president_id_model);
-
-                                }
-                            }
-                                                   }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });*/
+                   */
                     databaseReference.addValueEventListener(new ValueEventListener(){
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -97,7 +75,7 @@ public class Society_Code extends AppCompatActivity{
                             }
                             else
                             {
-                                Toast.makeText(Society_Code.this, "Not Valid!!!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Society_Code.this, "Society Code Not Valid!!!", Toast.LENGTH_SHORT).show();
                             }
                         }
 
