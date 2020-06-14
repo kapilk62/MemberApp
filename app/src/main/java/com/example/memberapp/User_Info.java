@@ -51,14 +51,17 @@ public class User_Info extends AppCompatActivity {
                     User user =new  User(firstName,lastName,userEmail);
                     databaseReference.setValue(user);
 
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    finish();
+                    /*startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    finish();*/
+                    checkMemberPresident();
 
                 }else {
                     Toast.makeText(User_Info.this, "All Field Are Required!!", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
+
     }
 
     private void checkMemberPresident() {
@@ -80,4 +83,14 @@ public class User_Info extends AppCompatActivity {
             }
         });
     }
+
+   /* @Override
+    protected void onStart() {
+        super.onStart();
+        if (firebaseAuth.getCurrentUser()!=null){
+            checkMemberPresident();
+        }else {
+
+        }
+    }*/
 }

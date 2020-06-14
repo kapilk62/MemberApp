@@ -100,7 +100,8 @@ public class Register_user extends AppCompatActivity {
     }
 
     private void checkMemberPresident() {
-        DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id");
+        String currentUserId= fAuth.getCurrentUser().getUid();
+        DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentUserId);
         member_president_id.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

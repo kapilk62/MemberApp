@@ -26,7 +26,6 @@ public class Society_Code extends AppCompatActivity{
     String president_userid;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
-    DatabaseReference databaseReferencepresident_id;
     DatabaseReference member_president_id;
     EditText Society_code;
     Button Society_code_btn;
