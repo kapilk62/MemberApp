@@ -1,15 +1,14 @@
-package com.example.memberapp.Model;
+package com.example.presidentapp.Model;
 
 public class User {
-    String first_name, last_name , email, mobile_number ;
+    String first_name, last_name , email ;
 
     public User(){ }
 
-    public User(String first_name, String last_name, String email,String mobile_number) {
+    public User(String first_name, String last_name, String email) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
-        this.mobile_number = mobile_number;
     }
 
     public String getFirst_name() {
@@ -22,10 +21,6 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getMobile_number() {
-        return mobile_number;
     }
 
 }

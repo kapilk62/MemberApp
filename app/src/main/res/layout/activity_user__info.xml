@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User_Info">
+
+    <EditText
+        android:id="@+id/firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/alike_angular"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/alike_angular"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        android:textColor="#ffffff"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColorHint="#030303"
+        app:layout_constraintTop_toBottomOf="@+id/firstname"
+        tools:layout_editor_absoluteX="19dp" />
+
+    <EditText
+        android:id="@+id/emailid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/alike_angular"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Email id"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FC000000"
+        app:layout_constraintTop_toBottomOf="@+id/lastname"
+        tools:layout_editor_absoluteX="26dp" />
+
+    <Button
+        android:id="@+id/saveuser_btn"
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Save"
+        app:layout_constraintTop_toBottomOf="@+id/emailid"
+        tools:layout_editor_absoluteX="0dp">
+
+    </Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
