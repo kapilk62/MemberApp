@@ -58,7 +58,7 @@ public class Register_user extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!verificationInProgress) {
+                if (!verificationInProgress) {
 
                     if (!phoneNumber.getText().toString().isEmpty() && phoneNumber.getText().toString().length() == 10) {
                         String phoneNum = "+" + countryCodePicker.getSelectedCountryCode() + phoneNumber.getText().toString();
@@ -71,13 +71,13 @@ public class Register_user extends AppCompatActivity {
                     } else {
                         phoneNumber.setError("Phone Number is Not Valid!!");
                     }
-                }else {
-                    String userOTP= codeEnter.getText().toString();
-                    if(!userOTP.isEmpty() && userOTP.length() ==6){
-                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verficationId,userOTP);
+                } else {
+                    String userOTP = codeEnter.getText().toString();
+                    if (!userOTP.isEmpty() && userOTP.length() == 6) {
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verficationId, userOTP);
                         verifyAuth(credential);
 
-                    }else {
+                    } else {
                         codeEnter.setError("Valid OTP is Required.");
                     }
 
@@ -89,30 +89,31 @@ public class Register_user extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (fAuth.getCurrentUser()!=null){
+        if (fAuth.getCurrentUser() != null) {
             progressBar.setVisibility(View.VISIBLE);
             state.setText("Checking...");
             state.setVisibility(View.VISIBLE);
             checkUserProfile();
-        }else {
+        } else {
 
         }
     }
 
     private void checkMemberPresident() {
-        String currentUserId= fAuth.getCurrentUser().getUid();
+        String currentUserId = fAuth.getCurrentUser().getUid();
         DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentUserId);
         member_president_id.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                if (dataSnapshot.exists()) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
-                }else {
-                    startActivity(new Intent(getApplicationContext(),Society_Code.class));
+                } else {
+                    startActivity(new Intent(getApplicationContext(), Society_Code.class));
                     finish();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -125,12 +126,12 @@ public class Register_user extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     checkMemberPresident();
                     //startActivity(new Intent(getApplicationContext(),Society_Code.class));
                     //finish();
-                }else {
-                    startActivity(new Intent(getApplicationContext(),User_Info.class));
+                } else {
+                    startActivity(new Intent(getApplicationContext(), User_Info.class));
                     finish();
                 }
             }
@@ -146,9 +147,9 @@ public class Register_user extends AppCompatActivity {
         fAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     checkUserProfile();
-                }else {
+                } else {
                     Toast.makeText(Register_user.this, "Authentication failed!!!!", Toast.LENGTH_SHORT).show();
                 }
 

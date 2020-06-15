@@ -14,7 +14,7 @@ import android.view.View;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
@@ -41,109 +41,62 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (mToggle.onOptionsItemSelected(item)) {
 
             return true;
-        }
-        else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
 
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item){
-        int id=item.getItemId();
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
-        if(id==R.id.sprofile)
-        {
+        if (id == R.id.sprofile) {
             //Intent i = new Intent(MainActivity.this,Profile.class);
-           // startActivity(i);
-        }
-
-
-        else if(id==R.id.smy_bills)
-        {
-           // Intent i = new Intent(MainActivity.this,Join_Building_Page.class);
-           // startActivity(i);
-        }
-
-        else if(id==R.id.semergency_number)
-        {
-           // Intent i = new Intent(MainActivity.this, Emergency_Number.class);
+            // startActivity(i);
+        } else if (id == R.id.smy_bills) {
+            // Intent i = new Intent(MainActivity.this,Join_Building_Page.class);
+            // startActivity(i);
+        } else if (id == R.id.semergency_number) {
+            // Intent i = new Intent(MainActivity.this, Emergency_Number.class);
             //startActivity(i);
-        }
-
-        else if(id==R.id.sevents)
-        {
-           // Intent i = new Intent(MainActivity.this,Event.class);
-           // startActivity(i);
-        }
-
-        else if (id==R.id.scomplaints){
-        //    Intent i = new Intent(MainActivity.this,Complaints.class);
-          //  startActivity(i);
-        }
-
-        else if(id==R.id.swallet)
-        {
+        } else if (id == R.id.sevents) {
+            // Intent i = new Intent(MainActivity.this,Event.class);
+            // startActivity(i);
+        } else if (id == R.id.scomplaints) {
+            //    Intent i = new Intent(MainActivity.this,Complaints.class);
+            //  startActivity(i);
+        } else if (id == R.id.swallet) {
             //Intent i = new Intent(MainActivity.this,multiple_building_page.class);
             //startActivity(i);
-        }
+        } else if (id == R.id.smember) {
 
-        else if(id==R.id.smember)
-        {
+        } else if (id == R.id.svehicles) {
 
-        }
-
-        else if(id==R.id.svehicles)
-        {
-
-        }
-
-        else if(id==R.id.sannouncements)
-        {
+        } else if (id == R.id.sannouncements) {
             //Intent i = new Intent(MainActivity.this,Announcements.class);
             //startActivity(i);
-        }
+        } else if (id == R.id.sbalance_sheet) {
 
-        else if(id==R.id.sbalance_sheet)
-        {
+        } else if (id == R.id.sdocument) {
 
-        }
-
-        else if(id==R.id.sdocument)
-        {
-
-        }
-
-        else if(id==R.id.srules)
-        {
+        } else if (id == R.id.srules) {
             //Intent i = new Intent(MainActivity.this,Rules.class);
             //startActivity(i);
-        }
+        } else if (id == R.id.snotification) {
 
-        else if(id==R.id.snotification)
-        {
+        } else if (id == R.id.ssetting) {
 
-        }
-
-        else if(id==R.id.ssetting)
-        {
-
-        }
-
-        else if (id==R.id.logoutbutton)
-        {
+        } else if (id == R.id.logoutbutton) {
             //FirebaseAuth.getInstance().signOut();
             //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-           // finish();
-        }
-
-        else if(id==R.id.scontact_us)
-        {
+            // finish();
+        } else if (id == R.id.scontact_us) {
             //Intent i = new Intent(MainActivity.this, ContactsActivity.class);
             //startActivity(i);
         }
 
-        DrawerLayout drawer1 =findViewById(R.id.drawer);
+        DrawerLayout drawer1 = findViewById(R.id.drawer);
         drawer1.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -152,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i;
         switch (view.getId()) {
             case R.id.bills:
-              //  i = new Intent(this, Bills.class);
+                //  i = new Intent(this, Bills.class);
                 //startActivity(i);
                 break;
             case R.id.members:
@@ -160,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //startActivity(i);
                 break;
             case R.id.society_fund:
-               // i = new Intent(this, Society_Fund.class);
+                // i = new Intent(this, Society_Fund.class);
                 //startActivity(i);
                 //break;
             case R.id.emergency_number:
@@ -174,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.complaints:
                 //i = new Intent(this, Complaints.class);
                 //startActivity(i);
-               // break;
+                // break;
             case R.id.vehicles:
                 //i = new Intent(this, Vehicles.class);
                 //startActivity(i);

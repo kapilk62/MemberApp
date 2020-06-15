@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Multiple_Society extends AppCompatActivity implements View.OnClickListener ,NavigationView.OnNavigationItemSelectedListener {
+public class Multiple_Society extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "hello";
     private RecyclerView adminBuildingList;
     DatabaseReference databaseReference;
@@ -33,13 +33,12 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
     private NavigationView mNavigationView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Intent intent =getIntent();
+        Intent intent = getIntent();
         String President_UserId = intent.getStringExtra("PresidentUserId");
-        Log.d(TAG, "onCreate: "+President_UserId);
+        Log.d(TAG, "onCreate: " + President_UserId);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiple__society);
         String currentuserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -69,16 +68,15 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
         if (mToggle.onOptionsItemSelected(item)) {
 
             return true;
-        }
-        else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
 
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item){
-        int id=item.getItemId();
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
        /* if(id==R.id.sprofile)
         {
@@ -99,11 +97,10 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
             startActivity(i);
         }*/
 
-        DrawerLayout drawer1 =findViewById(R.id.drawer);
+        DrawerLayout drawer1 = findViewById(R.id.drawer);
         drawer1.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 
     @Override

@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class User_Info extends AppCompatActivity {
 
-    EditText firstname,lastname,email;
+    EditText firstname, lastname, email;
     Button saveBtn;
     FirebaseAuth firebaseAuth;
     String userID;
@@ -42,20 +42,20 @@ public class User_Info extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!firstname.getText().toString().isEmpty() && !lastname.getText().toString().isEmpty() && !email.getText().toString().isEmpty()){
+                if (!firstname.getText().toString().isEmpty() && !lastname.getText().toString().isEmpty() && !email.getText().toString().isEmpty()) {
                     String firstName = firstname.getText().toString();
                     String lastName = lastname.getText().toString();
                     String userEmail = email.getText().toString();
                     String userInfoId = databaseReference.getKey();
 
-                    User user =new  User(firstName,lastName,userEmail);
+                    User user = new User(firstName, lastName, userEmail);
                     databaseReference.setValue(user);
 
                     /*startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     finish();*/
                     checkMemberPresident();
 
-                }else {
+                } else {
                     Toast.makeText(User_Info.this, "All Field Are Required!!", Toast.LENGTH_SHORT).show();
                 }
 
@@ -69,14 +69,15 @@ public class User_Info extends AppCompatActivity {
         member_president_id.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                if (dataSnapshot.exists()) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
-                }else {
-                    startActivity(new Intent(getApplicationContext(),Society_Code.class));
+                } else {
+                    startActivity(new Intent(getApplicationContext(), Society_Code.class));
                     finish();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
