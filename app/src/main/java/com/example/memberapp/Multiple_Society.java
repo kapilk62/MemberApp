@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.memberapp.Model.CreateNewSocietyModel;
+import com.example.memberapp.Model.Member_society_id_model;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -115,8 +116,10 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onClick(View view) {
                         String buildingId = getRef(i).getKey();
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("member_society_id");
+                        Member_society_id_model member_society_id_model = new  Member_society_id_model(buildingId);
+                        databaseReference.setValue(member_society_id_model);
                         Intent intent = new Intent(Multiple_Society.this, MainActivity.class);
-                        intent.putExtra("BUILDINGID", buildingId);
                         startActivity(intent);
                     }
                 });

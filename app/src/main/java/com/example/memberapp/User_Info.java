@@ -58,14 +58,13 @@ public class User_Info extends AppCompatActivity {
                 } else {
                     Toast.makeText(User_Info.this, "All Field Are Required!!", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
     }
 
     private void checkMemberPresident() {
-        DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id");
+        String currentUserId = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentUserId);
         member_president_id.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
