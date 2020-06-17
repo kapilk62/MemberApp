@@ -62,6 +62,28 @@ public class User_Info extends AppCompatActivity {
         });
     }
 
+    private void checkSocietyId() {
+        String currentUserId = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_society_id").child(currentUserId);
+        member_president_id.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), Multiple_Society.class));
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void checkMemberPresident() {
         String currentUserId = firebaseAuth.getCurrentUser().getUid();
         DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentUserId);
@@ -69,8 +91,9 @@ public class User_Info extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
+                   checkSocietyId();
+                    // startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                  //  finish();
                 } else {
                     startActivity(new Intent(getApplicationContext(), Society_Code.class));
                     finish();

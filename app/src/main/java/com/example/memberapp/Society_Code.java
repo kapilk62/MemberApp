@@ -53,7 +53,8 @@ public class Society_Code extends AppCompatActivity {
                                 Member_president_model member_president_model = new Member_president_model(president_userid);
                                 member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentuserId);
                                 member_president_id.setValue(member_president_model);
-
+                                //GlobalClass globalClass = (GlobalClass) getApplicationContext();
+                                //globalClass.setMember_president_id(president_userid);
                                 Intent intent = new Intent(getApplicationContext(), Multiple_Society.class);
                                 intent.putExtra("PresidentUserId", president_userid);
                                 startActivity(intent);

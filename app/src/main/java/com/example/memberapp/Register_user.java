@@ -106,10 +106,33 @@ public class Register_user extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
+                    checkSocietyId();
+                    //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    //finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), Society_Code.class));
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void checkSocietyId() {
+        String currentUserId = fAuth.getCurrentUser().getUid();
+        DatabaseReference member_president_id = FirebaseDatabase.getInstance().getReference("Member_society_id").child(currentUserId);
+        member_president_id.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {
-                    startActivity(new Intent(getApplicationContext(), Society_Code.class));
+                    startActivity(new Intent(getApplicationContext(), Multiple_Society.class));
                     finish();
                 }
             }
