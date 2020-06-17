@@ -46,15 +46,37 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiple__society);
-
+        currentuserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 //        databaseReference.keepSynced(true);
-       /* databaseReference_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentuserId);
+        databaseReference_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentuserId);
         databaseReference_president_id.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Member_president_model member_president_model = dataSnapshot.getValue(Member_president_model.class);
                 member_president_id = member_president_model.getMember_president_id();
                 Log.d(TAG, "onDataChange: "+member_president_id);
+                databaseReference1 = FirebaseDatabase.getInstance().getReference("New Building").child(member_president_id);
+
+                FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder>
+                        (CreateNewSocietyModel.class, R.layout.cardview_admin, buildingAdminViewHolder.class, databaseReference1) {
+                    @Override
+                    protected void populateViewHolder(buildingAdminViewHolder buildingAdminViewHolder, CreateNewSocietyModel createNewSocietyModel, final int i) {
+                        buildingAdminViewHolder.setBuildingName(createNewSocietyModel.getBuildingName());
+                        buildingAdminViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                String buildingId = getRef(i).getKey();
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("member_society_id").child(currentuserId);
+                                Member_society_id_model member_society_id_model = new  Member_society_id_model(buildingId);
+                                databaseReference.setValue(member_society_id_model);
+                                Intent intent = new Intent(Multiple_Society.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+
+                    }
+                };
+                adminBuildingList.setAdapter(firebaseRecyclerAdapter);
             }
 
             @Override
@@ -62,7 +84,6 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
                 System.out.println("failed: " + databaseError.getCode());
             }
         });
-*/
         //createNewSociety = findViewById(R.id.create_new_society_cardView);
         adminBuildingList = findViewById(R.id.recyclerViewAdmin);
         adminBuildingList.setHasFixedSize(true);
@@ -125,7 +146,7 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onStart() {
         super.onStart();
-        currentuserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+       /*
         Intent intent = getIntent();
         String President_UserId = intent.getStringExtra("PresidentUserId");
         Log.d(TAG, "onCreate: " + President_UserId);
@@ -133,30 +154,11 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
         member_president_id = globalClass.getMember_president_id();
         Log.d(TAG, "global to mul : "+member_president_id);
         president_id_member = member_president_id;
-        Log.d(TAG, "onStart: "+president_id_member);
+        Log.d(TAG, "onStart: "+president_id_member);*/
 
 
-        databaseReference1 = FirebaseDatabase.getInstance().getReference("New Building").child(member_president_id);
-        FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder>
-                (CreateNewSocietyModel.class, R.layout.cardview_admin, buildingAdminViewHolder.class, databaseReference1) {
-            @Override
-            protected void populateViewHolder(buildingAdminViewHolder buildingAdminViewHolder, CreateNewSocietyModel createNewSocietyModel, final int i) {
-                buildingAdminViewHolder.setBuildingName(createNewSocietyModel.getBuildingName());
-                buildingAdminViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String buildingId = getRef(i).getKey();
-                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("member_society_id").child(currentuserId);
-                        Member_society_id_model member_society_id_model = new  Member_society_id_model(buildingId);
-                        databaseReference.setValue(member_society_id_model);
-                        Intent intent = new Intent(Multiple_Society.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
 
-            }
-        };
-        adminBuildingList.setAdapter(firebaseRecyclerAdapter);
+
     }
 
     @Override
