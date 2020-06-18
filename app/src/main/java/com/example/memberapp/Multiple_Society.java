@@ -9,7 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,16 +39,20 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
     private NavigationView mNavigationView;
     String currentuserId;
     DatabaseReference databaseReference_president_id;
+    SharedPreferences sharedPreferences;
     DatabaseReference databaseReference1;
+    static final String myPref = "myPref";
+    static final String myPresidentId = "myPresidentIdKey";
     String member_president_id;
     String president_id_member;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiple__society);
         currentuserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        loadpresidentid();
 //        databaseReference.keepSynced(true);
         databaseReference_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentuserId);
         databaseReference_president_id.addValueEventListener(new ValueEventListener(){
@@ -54,9 +60,9 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Member_president_model member_president_model = dataSnapshot.getValue(Member_president_model.class);
                 member_president_id = member_president_model.getMember_president_id();
-                Log.d(TAG, "onDataChange: "+member_president_id);
-                databaseReference1 = FirebaseDatabase.getInstance().getReference("New Building").child(member_president_id);
 
+                //Log.d(TAG, "onDataChange: "+member_president_id);
+                databaseReference1 = FirebaseDatabase.getInstance().getReference("New Building").child(member_president_id);
                 FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder>
                         (CreateNewSocietyModel.class, R.layout.cardview_admin, buildingAdminViewHolder.class, databaseReference1) {
                     @Override
@@ -166,6 +172,24 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
+
+    public void savepresidentid(){
+        String presidentId = member_president_id;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(myPresidentId,presidentId);
+        editor.commit();
+        //SharedPreferences sharedPreferencespresidentid = getSharedPreferences("savepresidentid",MODE_PRIVATE);
+        //SharedPreferences.Editor editor = sharedPreferencespresidentid.edit();
+        //editor.putString("presidentidvalue",member_president_id);
+        //editor.apply();
+    }
+    public void loadpresidentid(){
+        sharedPreferences = getSharedPreferences(myPref, Context.MODE_PRIVATE);
+        sharedPreferences.contains(myPresidentId);
+        member_president_id = sharedPreferences.getString(myPresidentId,"");
+        Log.d(TAG, "loadpresidentid: "+sharedPreferences.getString(myPresidentId,""));
+    }
+
 
     public static class buildingAdminViewHolder extends RecyclerView.ViewHolder {
         View view;

@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.sdocument) {
 
         } else if (id == R.id.srules) {
-            //Intent i = new Intent(MainActivity.this,Rules.class);
-            //startActivity(i);
+            Intent i = new Intent(MainActivity.this,Rules.class);
+            startActivity(i);
         } else if (id == R.id.snotification) {
 
         } else if (id == R.id.ssetting) {

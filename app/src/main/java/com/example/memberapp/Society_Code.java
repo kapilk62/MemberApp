@@ -3,7 +3,9 @@ package com.example.memberapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,11 +26,17 @@ import com.google.firebase.database.ValueEventListener;
 public class Society_Code extends AppCompatActivity {
 
     String president_userid;
+    private static final String TAG = "hello";
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     DatabaseReference member_president_id;
     EditText Society_code;
     Button Society_code_btn;
+    SharedPreferences sharedPreferences;
+
+    static final String myPref = "myPref";
+    static final String myPresidentId = "myPresidentIdKey";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,9 @@ public class Society_Code extends AppCompatActivity {
                                 Member_president_model member_president_model = new Member_president_model(president_userid);
                                 member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentuserId);
                                 member_president_id.setValue(member_president_model);
+
+                                savepresidentid();
+                                loadpresidentid();
                                 //GlobalClass globalClass = (GlobalClass) getApplicationContext();
                                 //globalClass.setMember_president_id(president_userid);
                                 Intent intent = new Intent(getApplicationContext(), Multiple_Society.class);
@@ -74,5 +85,16 @@ public class Society_Code extends AppCompatActivity {
         });
 
 
+    }
+    public void savepresidentid(){
+        String presidentId = president_userid;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(myPresidentId,presidentId);
+        editor.commit();
+    }
+    public void loadpresidentid(){
+        sharedPreferences = getSharedPreferences(myPref, Context.MODE_PRIVATE);
+        sharedPreferences.contains(myPresidentId);
+        Log.d(TAG, "loadpresidentid: "+sharedPreferences.getString(myPresidentId,""));
     }
 }
