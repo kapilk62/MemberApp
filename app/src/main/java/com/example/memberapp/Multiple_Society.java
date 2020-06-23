@@ -72,6 +72,9 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
                             @Override
                             public void onClick(View view) {
                                 String buildingId = getRef(i).getKey();
+                                GlobalClass globalClass = (GlobalClass) getApplicationContext();
+                                globalClass.setBuildingId(buildingId);
+                                Log.d(TAG, "onClick: "+buildingId);
                                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("member_society_id").child(currentuserId);
                                 Member_society_id_model member_society_id_model = new  Member_society_id_model(buildingId);
                                 databaseReference.setValue(member_society_id_model);

@@ -14,30 +14,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class GlobalClass extends Application {
-    DatabaseReference databaseReference_president_id;
-    private String member_president_id;
-    private static final String TAG = "1";
-    String currentuserId;
-    public String getMember_president_id(){
-        currentuserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        databaseReference_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentuserId);
-        databaseReference_president_id.addValueEventListener(new ValueEventListener(){
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Member_president_model member_president_model = dataSnapshot.getValue(Member_president_model.class);
-                member_president_id = member_president_model.getMember_president_id();
-                Log.d(TAG, "global: "+member_president_id);
-            }
+    private String buildingId;
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                System.out.println("failed: " + databaseError.getCode());
-            }
-        });
+    public String getBuildingId() {
+        return buildingId;
+    }
 
-        return member_president_id;}
-
-    public void setMember_president_id(String member_president_id) {
-        this.member_president_id = member_president_id;
+    public void setBuildingId(String buildingId) {
+        this.buildingId = buildingId;
     }
 }
