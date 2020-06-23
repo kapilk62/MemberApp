@@ -61,6 +61,8 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
                 Member_president_model member_president_model = dataSnapshot.getValue(Member_president_model.class);
                 member_president_id = member_president_model.getMember_president_id();
 
+                GlobalClass globalClass = (GlobalClass) getApplicationContext();
+                globalClass.setPresident_id(member_president_id);
                 //Log.d(TAG, "onDataChange: "+member_president_id);
                 databaseReference1 = FirebaseDatabase.getInstance().getReference("New Building").child(member_president_id);
                 FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<CreateNewSocietyModel, buildingAdminViewHolder>
@@ -181,11 +183,8 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(myPresidentId,presidentId);
         editor.commit();
-        //SharedPreferences sharedPreferencespresidentid = getSharedPreferences("savepresidentid",MODE_PRIVATE);
-        //SharedPreferences.Editor editor = sharedPreferencespresidentid.edit();
-        //editor.putString("presidentidvalue",member_president_id);
-        //editor.apply();
     }
+
     public void loadpresidentid(){
         sharedPreferences = getSharedPreferences(myPref, Context.MODE_PRIVATE);
         sharedPreferences.contains(myPresidentId);
@@ -207,4 +206,5 @@ public class Multiple_Society extends AppCompatActivity implements View.OnClickL
             building_name.setText(buildingName);
         }
     }
+
 }

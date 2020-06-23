@@ -50,6 +50,7 @@ public class Society_Code extends AppCompatActivity {
             public void onClick(View v) {
                 if (!Society_code.getText().toString().isEmpty()) {
                     president_userid = Society_code.getText().toString();
+
                     databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("President").child(president_userid);
 
                     databaseReference.addValueEventListener(new ValueEventListener() {
@@ -57,13 +58,14 @@ public class Society_Code extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
                                 Toast.makeText(Society_Code.this, "Valid!!!", Toast.LENGTH_SHORT).show();
-                                GlobalClass globalClass = (GlobalClass) getApplicationContext();
-                                globalClass.setPresident_id(president_userid);
+                                //savepresidentid();
+//                                GlobalClass globalClass = (GlobalClass) getApplicationContext();
+//                                globalClass.setPresident_id(president_userid);
                                 //String CurrentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 Member_president_model member_president_model = new Member_president_model(president_userid);
                                 member_president_id = FirebaseDatabase.getInstance().getReference("Member_president_id").child(currentuserId);
                                 member_president_id.setValue(member_president_model);
-                               // savepresidentid();
+                                // savepresidentid();
                                 Intent intent = new Intent(getApplicationContext(), Multiple_Society.class);
                                 intent.putExtra("PresidentUserId", president_userid);
                                 startActivity(intent);
@@ -84,10 +86,10 @@ public class Society_Code extends AppCompatActivity {
 
 
     }
-  /*  public void savepresidentid(){
-        String presidentId = president_userid;
+
+    public void savepresidentid() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(myPresidentId,presidentId);
+        editor.putString(myPresidentId, president_userid);
         editor.commit();
-    }*/
+    }
 }

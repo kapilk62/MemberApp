@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import com.example.memberapp.Adapter.RuleList;
 import com.example.memberapp.Model.Rule;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,7 +50,7 @@ public class Rules extends AppCompatActivity {
         GlobalClass globalClass = (GlobalClass) getApplicationContext();
         buildingId = globalClass.getBuildingId();
         prsident_id = globalClass.getPresident_id();
-        Log.d(TAG, "onCreate: "+prsident_id);
+        Log.d(TAG, "onCreate: " + prsident_id);
 
         databaseRule = FirebaseDatabase.getInstance().getReference("Rules").child(prsident_id).child(buildingId);
 
@@ -64,7 +65,7 @@ public class Rules extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart: "+ruleList);
+        Log.d(TAG, "onStart: " + ruleList);
         databaseRule.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -74,7 +75,7 @@ public class Rules extends AppCompatActivity {
                     Rule rule = ruleSnapshot.getValue(Rule.class);
 
                     ruleList.add(rule);
-                    Log.d(TAG, "onDataChange: "+ruleList);
+                    Log.d(TAG, "onDataChange: " + ruleList);
                 }
                 RuleList adapter = new RuleList(Rules.this, ruleList);
                 listViewRules.setAdapter(adapter);
@@ -82,7 +83,7 @@ public class Rules extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d(TAG, "onCancelled: "+databaseError);
+                Log.d(TAG, "onCancelled: " + databaseError);
             }
         });
     }
@@ -97,10 +98,11 @@ public class Rules extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    /*public void loadpresidentid(){
+
+    public void loadpresidentid() {
         sharedPreferences = getSharedPreferences(myPref, Context.MODE_PRIVATE);
         sharedPreferences.contains(myPresidentId);
-        member_president_id = sharedPreferences.getString(myPresidentId,"");
-        Log.d(TAG, "rulepresidentid: "+sharedPreferences.getString(myPresidentId,""));
-    }*/
+        member_president_id = sharedPreferences.getString(myPresidentId, "");
+        Log.d(TAG, "rulepresidentid: " + sharedPreferences.getString(myPresidentId, ""));
+    }
 }
