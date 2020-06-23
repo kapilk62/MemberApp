@@ -14,13 +14,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class GlobalClass extends Application {
-    private String buildingId;
+    private String buildingId,president_id;
 
     public String getBuildingId() {
         return buildingId;
     }
 
+    public String getPresident_id() {return president_id;}
+
     public void setBuildingId(String buildingId) {
         this.buildingId = buildingId;
     }
+
+    public  void  setPresident_id(String president_id) { this.president_id =president_id;}
 }

@@ -38,6 +38,7 @@ public class Rules extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     String member_president_id;
     private static final String TAG = "1";
+    String prsident_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +46,19 @@ public class Rules extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rules);
-        loadpresidentid();
-        String id = "M9HAQ0btlXarhRQnmq5";
         GlobalClass globalClass = (GlobalClass) getApplicationContext();
         buildingId = globalClass.getBuildingId();
-        Log.d(TAG, "onCreate: "+buildingId);
-        databaseRule = FirebaseDatabase.getInstance().getReference("Rules").child(currentuserId).child(buildingId);
+        prsident_id = globalClass.getPresident_id();
+        Log.d(TAG, "onCreate: "+prsident_id);
+
+        databaseRule = FirebaseDatabase.getInstance().getReference("Rules").child(prsident_id).child(buildingId);
 
         //editTextRule = (EditText) findViewById(R.id.add_rule_txtfld);
         btnAddRule = findViewById(R.id.add_rule_btn);
 
         listViewRules = findViewById(R.id.listViewRules);
         ruleList = new ArrayList<>();
-        Log.d(TAG, "onCreate: ");
+
     }
 
     @Override
@@ -96,10 +97,10 @@ public class Rules extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void loadpresidentid(){
+    /*public void loadpresidentid(){
         sharedPreferences = getSharedPreferences(myPref, Context.MODE_PRIVATE);
         sharedPreferences.contains(myPresidentId);
         member_president_id = sharedPreferences.getString(myPresidentId,"");
         Log.d(TAG, "rulepresidentid: "+sharedPreferences.getString(myPresidentId,""));
-    }
+    }*/
 }
