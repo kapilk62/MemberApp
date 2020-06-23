@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Rules" />
+        <activity android:name=".Rules"
+            android:label="Rules"
+            android:parentActivityName=".Rules"/>
         <activity android:name=".User_Info" />
         <activity android:name=".Multiple_Society" />
         <activity android:name=".Society_Code" />
