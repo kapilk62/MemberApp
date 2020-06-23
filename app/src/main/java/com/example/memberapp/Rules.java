@@ -67,7 +67,7 @@ public class Rules extends AppCompatActivity {
         databaseRule.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                ruleList.clear();
 
                 for (DataSnapshot ruleSnapshot : dataSnapshot.getChildren()) {
                     Rule rule = ruleSnapshot.getValue(Rule.class);
